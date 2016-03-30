@@ -14,7 +14,14 @@ First, compile the code using a fortran 77 compiler (windows, linux or mac):
 
 Run the main.exe file and answer the questions. 
 
-### Convert multiple files (until 500 files) # NEED REVIEW
+    ./main.exe
+    Do you have a file with file names? N
+    Write the path and name of the csv file: test_data/single/example.csv
+    Do you want convert more files? N
+
+A test_data/single/example.spe should be created.
+
+### NEED REVIEW Convert multiple files (until 500 files) 
 
 Create a file with all files names:
    

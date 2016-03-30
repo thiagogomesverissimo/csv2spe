@@ -1,43 +1,32 @@
 	PROGRAM CONVERT_SPE
 c_ASK    03/03/2007 - IA-USP
 c
-c It is possible convert Poder converter espectros escritos um a um ou 
-c em uma lista dada por um arquivo texto. Para cria o arquivo,
-c pode-se simplemente escreve-los em uma unica coluna, ou gerar
-c usando o DOS, no Windows, da seguinte forma:
-c 1) abrir o Program Prompt, nos Accessories.
-c 2) ir para o diretorio onde estao os arquivos: cd <diretorio>
-c 3) dar o comando dir, colunado, direcionado para um arquivo,
-c    tendo cuidado para o limite deste programa, que sao
-c    até 500 arquivo.(lembre-se que os arquivos da fluorescencia tem
-c    terminacao .csv). 
-c    dir *csv/b > arquivo
+c It is possible convert one or multiple files. 
 c 
 	character*80 arq,especxrf,espec(500)
 	character*3 multi,outro,resp
 c verifica se há arquivo de espectros e o le se houver
-        print*,' Voce tem um arquivo com o nome dos espectros?'
-	print*,' Nao(N)    Sim(S)'
+        print*,'Do you have a file with file names?'
+	print*,' No (N)    Yes (S)'
 	read(*,'(a)') multi
 	resp=multi(1:1)
 	if(resp.eq.'n'.or.resp.eq.'N')then
 c procedimento para converter um espectro por vez	
-   35   print*,' Escreva o nome do arquivo do xrf'
+   35   print*,' Write the path and name of the csv file:'
 	print*,' '
-	print*,' O arquivo de saida tera o mesmo nome do arquivo de'
-	print*,' entrada, sem o ponto intermediario e com extencao .spe'
+	print*,' (The output file will have the same name of csv file)'
    	read(*,'(a)') especxrf
 	call CONVERTE(especxrf)
 c Permite converter outro espectro
-	print*,' Quer converter outro espectro?'
-	print*,' Nao(N)    Sim(S)'
+	print*,' Do you want convert more files?'
+	print*,' No (N)    Yes (S)'
 	read(*,'(a)') outro
 	resp=outro(1:1)
 	if(resp.eq.'n'.or.resp.eq.'N') go to 30
 	go to 35	
 	endif
 c Converte uma série de espectros listados em um arquivo
-   	print*,' Escreva o nome do arquivo com o nome dos espectros'
+   	print*,' Write the contain the file names of csv files'
 	read(*,'(a)') arq
 	open(103,file=arq,status='unknown')
 c
