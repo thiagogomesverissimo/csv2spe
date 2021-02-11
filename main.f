@@ -5,7 +5,7 @@ c It is possible convert one or multiple files.
 c 
 	character*80 arq,especxrf,espec(500)
 	character*3 multi,outro,resp
-c verifica se h· arquivo de espectros e o le se houver
+c verifica se h√° arquivo de espectros e o le se houver
         print*,'Do you have a file with file names?'
 	print*,' No (N)    Yes (S)'
 	read(*,'(a)') multi
@@ -25,13 +25,13 @@ c Permite converter outro espectro
 	if(resp.eq.'n'.or.resp.eq.'N') go to 30
 	go to 35	
 	endif
-c Converte uma sÈrie de espectros listados em um arquivo
+c Converte uma s√©rie de espectros listados em um arquivo
    	print*,' Write the contain the file names of csv files'
 	read(*,'(a)') arq
 	open(103,file=arq,status='unknown')
 c
 	do i=1,500
-	   read(103,'(a)',err=60)espec(i)
+	   read(103,'(a)',end=60)espec(i)
 	   j=i
 	enddo
    60	close(103)
